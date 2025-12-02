@@ -404,14 +404,15 @@ with tab2:
     st.subheader("1. Which Symptoms Are Most Informative?")
 
     st.markdown("""
-    **The Question:** Are some symptoms *always* more informative than others,
-    regardless of what we already know?
+    **The Question:** Are some symptoms *inherently* more informative than others?
 
     **What We Did:** We calculated information gain for all 36 symptoms starting from
     the beginning (when all 8 diagnoses are equally likely at 12.5% each).
 
-    **Remember:** Information gain measures how much a question reduces our uncertainty.
-    Higher bits = more informative
+    **Key Difference from Section 2:** In the live diagnostic system, IG is calculated *dynamically*
+    after each answer (as probabilities change). Here, we're measuring **static discriminative power** —
+    how informative each symptom is from the uniform starting point. These rankings show which symptoms
+    would be best to ask *first*, when we know nothing.
     """)
 
     st.markdown("**Symptom Ranking by Information Gain**")
