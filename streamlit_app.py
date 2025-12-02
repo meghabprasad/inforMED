@@ -431,7 +431,18 @@ with tab2:
                 "Dizziness (S31)",
                 "Aura (S9)",
             ],
-            "MI (bits)": [0.407, 0.337, 0.313, "...", 0.251, "...", 0.110, 0.113, 0.091, 0.059],
+            "MI (bits)": [
+                0.407,
+                0.337,
+                0.313,
+                "...",
+                0.251,
+                "...",
+                0.110,
+                0.113,
+                0.091,
+                0.059,
+            ],
             "Type": [
                 "Temporal",
                 "Temporal",
@@ -453,8 +464,7 @@ with tab2:
     The top temporal question (0.41 bits) provides 60% more information than the best location question
     (0.25 bits), and nearly 7× more than questions about associated symptoms like aura (0.06 bits). 🤯
 
-    This is counterintuitive! You'd expect location or dramatic symptoms like visual disturbances to be
-    key, but temporal patterns are what truly distinguish headache types.
+    This is counterintuitive and interesting because you'd expect location to be the most informative, but temporal patterns are what truly distinguish headache types.
     """)
 
     # Create bar chart
