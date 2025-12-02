@@ -824,7 +824,7 @@ with tab4:
     - `analysis.py` - Computations for more insights
     - `streamlit_app.py` - Web interface and visualizations
 
-    **Repository:** [Add your GitHub link here when deployed]
+    **Repository:** [https://github.com/meghabprasad/inforMED](https://github.com/meghabprasad/inforMED)
     """)
 
 
