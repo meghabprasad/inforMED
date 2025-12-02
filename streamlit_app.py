@@ -460,50 +460,12 @@ with tab2:
     st.dataframe(symptom_ranking, use_container_width=True, hide_index=True)
 
     st.success("""
-    **The Insight:** Questions about *timing patterns* (duration, frequency) give the most information!
+    Questions about *timing patterns* (duration, frequency) give the most information!
     The top temporal question (0.41 bits) provides 60% more information than the best location question
     (0.25 bits), and nearly 7× more than questions about associated symptoms like aura (0.06 bits). 🤯
 
     This is counterintuitive and interesting because you'd expect location to be the most informative, but temporal patterns are what truly distinguish headache types.
     """)
-
-    # Create bar chart
-    all_mi_data = {
-        "S28": 0.407,
-        "S11": 0.337,
-        "S26": 0.313,
-        "S35": 0.309,
-        "S27": 0.282,
-        "S16": 0.276,
-        "S6": 0.270,
-        "S17": 0.259,
-        "S13": 0.251,
-        "S18": 0.250,
-        "S9": 0.059,
-        "S31": 0.091,
-        "S22": 0.110,
-        "S10": 0.127,
-        "S23": 0.128,
-    }
-
-    mi_df = pd.DataFrame(
-        list(all_mi_data.items()), columns=["Symptom", "Mutual Information (bits)"]
-    )
-    mi_df = mi_df.sort_values("Mutual Information (bits)", ascending=True)
-
-    fig_mi = px.bar(
-        mi_df,
-        x="Mutual Information (bits)",
-        y="Symptom",
-        orientation="h",
-        color="Mutual Information (bits)",
-        color_continuous_scale="Viridis",
-        title="Mutual Information Across Key Symptoms",
-    )
-    fig_mi.update_layout(height=400, showlegend=False)
-    st.plotly_chart(fig_mi, use_container_width=True)
-
-    st.markdown("---")
 
     # Analysis 2: Conditional Entropy Chains
     st.subheader("2. Do Later Questions Become More Powerful?")
@@ -565,11 +527,11 @@ with tab2:
     strategies work just as well?
 
     **What We Compared:**
-    1. **Random ordering:** Pick questions randomly (no strategy)
-    2. **Frequency-based:** Ask about common symptoms first (intuitive—"start with what's most likely")
+    1. **Random ordering:** Pick questions randomly 
+    2. **Frequency-based:** Ask about common symptoms first ("Is the headache on the left side or near the eyes?")
     3. **Information gain (ours):** Pick questions that reduce entropy most
 
-    **The Test:** We simulated diagnosing 4 different headache types and counted questions needed
+    We simulated diagnosing 4 different headache types and counted questions needed
     to reach 90% confidence.
     """)
 
