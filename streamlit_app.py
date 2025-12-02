@@ -414,46 +414,46 @@ with tab2:
     Higher bits = more informative
     """)
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.markdown("**Top-5 Most Informative Symptoms**")
-        top_symptoms = pd.DataFrame(
-            {
-                "Symptom": [
-                    "Pain lasts seconds (S28)",
-                    "Brief attacks 15-180 min (S11)",
-                    "Shock-like pain (S26)",
-                    "Multiple episodes (S35)",
-                    "Facial triggers (S27)",
-                ],
-                "MI (bits)": [0.407, 0.337, 0.313, 0.309, 0.282],
-            }
-        )
-        st.dataframe(top_symptoms, use_container_width=True, hide_index=True)
-
-    with col2:
-        st.markdown("**Bottom-5 Least Informative Symptoms**")
-        bottom_symptoms = pd.DataFrame(
-            {
-                "Symptom": [
-                    "Aura (S9)",
-                    "Dizziness (S31)",
-                    "Increasing frequency (S22)",
-                    "Family history (S10)",
-                    "Morning pain (S23)",
-                ],
-                "MI (bits)": [0.059, 0.091, 0.110, 0.127, 0.128],
-            }
-        )
-        st.dataframe(bottom_symptoms, use_container_width=True, hide_index=True)
+    st.markdown("**Symptom Ranking by Information Gain**")
+    symptom_ranking = pd.DataFrame(
+        {
+            "Rank": ["#1", "#2", "#3", "...", "#9", "...", "#32", "#33", "#35", "#36"],
+            "Symptom": [
+                "Pain lasts seconds (S28)",
+                "Brief attacks 15-180 min (S11)",
+                "Shock-like pain (S26)",
+                "...",
+                "Always same side (S13)",
+                "...",
+                "Increasing frequency (S22)",
+                "Caffeine withdrawal (S36)",
+                "Dizziness (S31)",
+                "Aura (S9)",
+            ],
+            "MI (bits)": [0.407, 0.337, 0.313, "...", 0.251, "...", 0.110, 0.113, 0.091, 0.059],
+            "Type": [
+                "Temporal",
+                "Temporal",
+                "Pain Quality",
+                "...",
+                "Location",
+                "...",
+                "Associated",
+                "Associated",
+                "Associated",
+                "Associated",
+            ],
+        }
+    )
+    st.dataframe(symptom_ranking, use_container_width=True, hide_index=True)
 
     st.success("""
-    **The Insight:** Questions about *when and how long* the pain lasts are 3-4× more informative
-    than questions about *where* it hurts! Cool! 🤯
+    **The Insight:** Questions about *timing patterns* (duration, frequency) give the most information!
+    The top temporal question (0.41 bits) provides 60% more information than the best location question
+    (0.25 bits), and nearly 7× more than questions about associated symptoms like aura (0.06 bits). 🤯
 
-    This is surprising! You'd think location matters most, but timing patterns are actually
-    the important factor to distinguishing headache types.
+    This is counterintuitive! You'd expect location or dramatic symptoms like visual disturbances to be
+    key, but temporal patterns are what truly distinguish headache types.
     """)
 
     # Create bar chart
