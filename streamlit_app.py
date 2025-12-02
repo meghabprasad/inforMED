@@ -583,7 +583,7 @@ with tab2:
     - "Does your head hurt?" → 100% for all types → gives us ZERO information
     - "Does pain last only seconds?" → Rare but specific to one type → highly informative!
 
-    **The Insight:** Your intuition says "ask about common things first," but information theory
+    Your intuition says "ask about common things first," but information theory
     says "ask about *distinctive* things first." Pretty cool :) 
     """)
 
